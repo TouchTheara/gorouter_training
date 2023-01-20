@@ -15,7 +15,7 @@ final GlobalKey<NavigatorState> _shellNavigatorKey =
 const _scaffoldKey = ValueKey<String>('App scaffold');
 final router = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: '/home',
+  initialLocation: '/',
   routes: [
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
@@ -28,7 +28,7 @@ final router = GoRouter(
         // This screen is displayed on the ShellRoute's Navigator.
         GoRoute(
           parentNavigatorKey: _shellNavigatorKey,
-          path: '/home',
+          path: '/',
           builder: (context, state) {
             return const HomePage();
           },
@@ -36,11 +36,20 @@ final router = GoRouter(
             // This screen is displayed on the ShellRoute's Navigator.
             GoRoute(
               path: 'detail',
+              // path: 'detail/:id/:name', // path query params
+              // path:':id' // path of 1 param
               name: "Detail",
               builder: (BuildContext context, GoRouterState state) {
-                // final id = int.parse(state.params['id'].toString()); //throw param
+                // final id = int.parse(state.params['id'].toString()); //Assign param
+
+                // final id = int.parse(state.params['id'].toString());
+                // final name = state.params['name'].toString();
+                // final homeModel = state.extra as HomeModel; //Assign object
+                final list = state.extra as List<HomeModel>; //Assign list
                 return DetailPage(
-                  homeModel: state.extra! as HomeModel, //throw
+                  listHome: list,
+                  // id: id, name: name, //throw query param
+                  // homeModel: state.extra! as HomeModel, //throw object or model
                 );
               },
             ),

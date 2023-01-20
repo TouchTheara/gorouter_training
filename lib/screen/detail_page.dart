@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:gorouter_training/model/home_model.dart';
 
 class DetailPage extends StatelessWidget {
+  // final HomeModel? homeModel;
   // final int? id;
-  final HomeModel? homeModel;
+  // final String? name;
+  final List<HomeModel>? listHome;
 
-  const DetailPage({Key? key, this.homeModel}) : super(key: key);
+  const DetailPage(
+      {Key? key,
+      // this.homeModel,
+      // this.id, this.name
+      this.listHome})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +22,13 @@ class DetailPage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          children: [
-            Text("Id ${homeModel!.id}"),
-            Text("Id ${homeModel!.name}"),
-            Text("Id ${homeModel!.position}"),
-          ],
-        ),
+            children: listHome!.map((e) => Text(e.id.toString())).toList()
+            // [
+            //   Text("Id $id"),
+            //   Text("Name $name"),
+            //   // Text("Id ${homeModel!.position}"),
+            // ],
+            ),
       ),
     );
   }

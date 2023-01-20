@@ -7,8 +7,15 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final homeModel =
-        HomeModel(id: '100', name: "Theara", position: "developer");
+    // final homeModel =
+    //     HomeModel(id: '100', name: "Theara", position: "developer");
+    // const int id = 11;
+    // const String name = "Theara";
+
+    final List<HomeModel> list = [
+      HomeModel(id: '1', name: 'aaaa', position: 'AAAAA'),
+      HomeModel(id: '2', name: 'bbbbb', position: 'BBBBB')
+    ];
     return Scaffold(
       appBar: AppBar(
         title: const Text("Home"),
@@ -18,8 +25,17 @@ class HomePage extends StatelessWidget {
           child: const Text("Go To Detail"),
           onPressed: () {
             // GoRouter.of(context).go('/detail');
-            // context.go("/home/detail", extra: homeModel);
-            context.go('/wishlist/wishlist_detail');
+            // context.go("/home/detail", extra: homeModel); //push object
+            // context.go('/wishlist/wishlist_detail');
+
+            // context.go("/$id"); //push param
+
+            // context.goNamed('detail', params: {
+            //   'id': id.toString(),
+            //   'name': name
+            // }); //push query params
+
+            // context.go('/detail', extra: list); //push list
           },
         ),
       ),

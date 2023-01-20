@@ -39,7 +39,7 @@ class ScaffoldWithNavBar extends StatelessWidget {
 
   static int _calculateSelectedIndex(BuildContext context) {
     final String location = GoRouterState.of(context).location;
-    if (location.startsWith('/home')) {
+    if (location.startsWith('/')) {
       return 0;
     }
     if (location.startsWith('/wishlist')) {
@@ -54,7 +54,7 @@ class ScaffoldWithNavBar extends StatelessWidget {
   void _onItemTapped(int index, BuildContext context) {
     switch (index) {
       case 0:
-        GoRouter.of(context).go('/home');
+        GoRouter.of(context).go('/');
         break;
       case 1:
         GoRouter.of(context).go('/wishlist');
